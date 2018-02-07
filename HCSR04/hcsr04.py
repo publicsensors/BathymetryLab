@@ -2,7 +2,7 @@ import machine, time
 from machine import Pin
 
 __version__ = '0.2.0'
-__author__ = 'Roberto Sánchez'
+__author__ = 'Roberto SÃ¡nchez'
 __license__ = "Apache License 2.0. https://www.apache.org/licenses/LICENSE-2.0"
 # Modified by R. Levine on 12/26/17 for academic use
 

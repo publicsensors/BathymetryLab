@@ -1,13 +1,14 @@
 #
-#  Example code to assess accuracy and precision of on-board and external RTCs relative to an NTP server.
-# 
+#  Collect data from an HCSR04 ultrasonic sensor by defining the sample interval
+#  and total time to record.  Write a file if requested.
+#
 from machine import RTC, Pin, unique_id
 import utime
 from ubinascii import hexlify
 from gc import collect
 from hcsr04 import HCSR04
 from os import rename
-collect()      # Free up heap space 
+collect()      # Free up heap space
 
 """
 #  An example of a typical execution sequence:
@@ -15,7 +16,7 @@ collect()      # Free up heap space
 # Sampling parameters
 #---------------------------------------
 
-import DistSave
+import HCSR04_SampleCt
 
 prefix = 'robert'
 interval_ms = 1 # sampling interval in milliseconds, 100 is 10Hz
@@ -25,7 +26,7 @@ echo_pin_num = 14 # echo pin connection to HCSR04 sensor
 sound_speed = 343 # Sound speed in m/s
 write_file = 1
 
-DistSave.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
+HCSR04_SampleCt.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
 
 """
 
@@ -35,7 +36,7 @@ def measure_dist(prefix='ocn351',interval_ms=100,record_time=10, trigger_pin_num
 	print('\nUsing sampling interval ',interval_ms,' milliseconds...')
 	print('Recording data for ',record_time,' seconds...\n')
 	ID=hexlify(unique_id()).decode('utf-8') # Unique ID of the microprocessor
-	tmp_file='tmp.txt'  # A temporary filename; we will write partial data to this file, and rename only if sampling 
+	tmp_file='tmp.txt'  # A temporary filename; we will write partial data to this file, and rename only if sampling
 	datafile=open(tmp_file,'w')
 	print('\n\n****Beginning Recording ****\n\n')
 
