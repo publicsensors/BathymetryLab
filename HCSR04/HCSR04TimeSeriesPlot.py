@@ -1,3 +1,8 @@
+#
+# Reads and plots time series of distance data recorded in text file
+# using HCSR04_Timer.py or HCSR04_SampleCt.py
+#
+
 import os, glob, datetime
 import matplotlib.pyplot as plt
 
