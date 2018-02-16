@@ -17,8 +17,8 @@ Runs HCSR04 to collect distance measurements at a fixed time interval using user
 ###  - HCSR04TimeSeriesPlot.py
 Reads .txt files produced by HCSR04_Timer.py or HCSR04_SampleCt.py to create time series scatter plots of distance measurements.  User must define directory of file locations.
 
-###  - SpeedOfSoundLab.ipynb
-(In development) IPython notebook containing instructions for lab activity to approximate the speed of sound in air using measurements collected at a fixed distance over variable values of `c`, sound speed.  Requires micropython firmware on ESP8266 or PyBoard microcontrollers and HC-SR04 sensor.
 
-### - BathymetryLab.ipynb
-(In Development) IPython notebook containing instructions for lab activity to measure and map the change in seafloor/bathymetry using a HCSR04 with a waterproof transducer.  Students collect data at fixed intervals along a dock or pier and then create a plot of the bathymetry using python on their own computers.
+###  - AcousticSensorLab.ipynb
+(In development) IPython notebook containing instructions for two lab activities:
+1.  Approximate the speed of sound in air using measurements collected at a fixed distance over variable values of `c`, sound speed.  Requires micropython firmware on ESP8266 or PyBoard microcontrollers and HC-SR04 sensor.
+2.  Measure and map the change in seafloor/bathymetry using a HCSR04 with a waterproof transducer.  Students collect data at fixed intervals along a dock or pier and then create a plot of the bathymetry using python on their own computers.
