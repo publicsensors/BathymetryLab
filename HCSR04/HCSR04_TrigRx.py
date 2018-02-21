@@ -30,15 +30,16 @@ echo_pin_num = 13 # echo pin connection to HCSR04 sensor
 sound_speed = 343 # Sound speed in m/s
 write_file = 0 # 0 to just print values, 1 to save to text file with file prefix defined above
 
-HCSR04_TrigRx.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
+HCSR04_TrigRx3.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
 
 """
 def measure_dist(prefix='ocn351',interval_ms=100, record_time = 5,trigger_pin_num = 12, echo_pin_num=13, sound_speed=343, write_file = 0):
+	global startSampleFlag
+	startSampleFlag = 0
 	sensor = HCSR04(trigger_pin = trigger_pin_num, echo_pin = echo_pin_num, c=sound_speed) # Set up the HCSR04
         print('\nUsing sampling interval ',interval_ms,' milliseconds...')
 	print('Recording data for ',record_time,' seconds...\n')
 	print('\n\n****Beginning Recording ****\n\n')
-	global runTimer
 	runTimer = Timer(-1) # Initiate a timer
 	tmp_file='tmp.txt'  # A temporary filename; we will write partial data to this file, and rename only if sampling
 	rtc = RTC() # intiate a real-time clock variable
@@ -53,12 +54,14 @@ def measure_dist(prefix='ocn351',interval_ms=100, record_time = 5,trigger_pin_nu
 		print('\nNot writing data to file\n') # Notify user
 	# Run a timer that executes our record_dist function periodically, with the interval of the period defined from interval_ms
 	print('\nWaiting For Trigger\n')
-	p14 = Pin(14, Pin.IN) # define my interrupt input
-	p14.irq(trigger=Pin.IRQ_FALLING, handler=RunTrigger(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, rtc, datafile, filename)) # set the trigger
+	while True:
+		if startSampleFlag==1:
+			startSampleFlag=0
+			init_record(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, rtc, datafile, filename)
 
-
-def RunTrigger(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, rtc, datafile, filename): # set the trigger):
-	init_record(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, rtc, datafile, filename)
+def RunTrigger(p): # set the trigger):
+	global startSampleFlag
+	startSampleFlag = 1
 
 def init_record(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, rtc, datafile, filename):
 	runTimer.init(period=interval_ms, mode=Timer.PERIODIC, callback=lambda t:record_dist(sensor,write_file, rtc, datafile))
@@ -82,3 +85,7 @@ def record_dist(sensor,write_file, rtc, datafile): # requires the sensor, real-t
 	# Whether writing a file or not, print the time and measurement for the user to see
 	print(t_onboard[0],t_onboard[1],t_onboard[2],t_onboard[4],t_onboard[5],t_onboard[6],t_onboard[7], dist)
 	led.value(1)
+
+global startSampleFlag
+p14 = Pin(14, Pin.IN) # define my interrupt input
+p14.irq(trigger=Pin.IRQ_FALLING, handler=RunTrigger) # set the trigger
