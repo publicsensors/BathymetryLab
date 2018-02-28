@@ -24,13 +24,13 @@ import HCSR04_TrigRx
 
 prefix = 'robert'
 interval_ms = 100 # sampling interval in milliseconds, 100 is 10Hz
-record_time = 5 # time to record in seconds
+record_time = 30 # time to record in seconds
 trigger_pin_num = 12 # trigger pin connection to HCSR04 sensor
 echo_pin_num = 13 # echo pin connection to HCSR04 sensor
 sound_speed = 343 # Sound speed in m/s
-write_file = 0 # 0 to just print values, 1 to save to text file with file prefix defined above
+write_file = 1 # 0 to just print values, 1 to save to text file with file prefix defined above
 
-HCSR04_TrigRx3.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
+HCSR04_TrigRx.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
 
 """
 def measure_dist(prefix='ocn351',interval_ms=100, record_time = 5,trigger_pin_num = 12, echo_pin_num=13, sound_speed=343, write_file = 0):
@@ -87,5 +87,5 @@ def record_dist(sensor,write_file, rtc, datafile): # requires the sensor, real-t
 	led.value(1)
 
 global startSampleFlag
-p14 = Pin(14, Pin.IN) # define my interrupt input
-p14.irq(trigger=Pin.IRQ_FALLING, handler=RunTrigger) # set the trigger
+p14 = Pin(14, mode = Pin.IN, pull = Pin.PULL_UP) # define my interrupt input
+p14.irq(trigger=Pin.IRQ_RISING, handler=RunTrigger) # set the trigger

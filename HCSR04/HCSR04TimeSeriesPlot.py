@@ -9,16 +9,14 @@ import matplotlib.pyplot as plt
 #------ USER DEFINED PARAMETER---------
 ## Change the path for data_directory below to match the path of your .txt file
 ## containing the output from your HCSR04
-data_directory='C:\\Users\\Robert\\Documents\\Teaching\\Ocean351_2018\\HCSR04\\'
+data_directory='C:\\Users\\Robert\\Documents\\Teaching\\Ocean351_2018\\testdata\\'
 #--------------------------------------
 
 file_list=[] # setup the variable to contain the file names
 for file in glob.glob(data_directory+"*.txt"): # find all of the .txt files
-	file_list.append(file) # add the files to a list
-print(file_list) # display the list for the user
-data_time = [] # create a variable to hold the measurement time
-data_dist = [] # create a variable to hole the measurement value
-for filename in file_list: # for each file found in the directory...
+	filename = file # add the files to a list
+	data_time = [] # create a variable to hold the measurement time
+	data_dist = [] # create a variable to hole the measurement value
 	with open(filename,'r') as file: # open the file
 		for line in file: # for each line of data in the file
 			data=line.split(' ') # use a space as the delimeter
@@ -39,11 +37,12 @@ for filename in file_list: # for each file found in the directory...
 			data_dist.append(float(data[7])) # Append the measurement to our list of distances
 
 # Create a set of axes
-fig, ax = plt.subplots()
-ax.plot_date(data_time, data_dist, markerfacecolor='CornflowerBlue', markeredgecolor='white') # plot our data
-fig.autofmt_xdate() # Tell python the x-ticks are datetime values
-ax.set_xlim([data_time[0], data_time[-1:]]) # Set the x-axis to range from our earliest to latest datetime value
-## Uncomment and edit the line below to set the y-axis limits
-#ax.set_ylim([0, 400])
+		fig, ax = plt.subplots()
+		ax.plot_date(data_time, data_dist, markerfacecolor='CornflowerBlue', markeredgecolor='white') # plot our data
+		fig.autofmt_xdate() # Tell python the x-ticks are datetime values
+		plt.title(filename)
+		ax.set_xlim([data_time[0], data_time[-1:]]) # Set the x-axis to range from our earliest to latest datetime value
+		## Uncomment and edit the line below to set the y-axis limits
+		#ax.set_ylim([0, 400])
 
-plt.show() #Show the plot
+		plt.show() #Show the plot
