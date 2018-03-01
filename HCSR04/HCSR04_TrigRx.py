@@ -1,6 +1,38 @@
 #
 #  Collect data from an HCSR04 ultrasonic sensor by setting a timer to sample at
 # a fixed interval for a given length of recording
+   # Free up heap space
+
+"""
+# Before calling HCSR04_TrigRx, the rtc on the ESP8266 must be synced with NTP:
+
+from network import WLAN, STA_IF
+wlan = WLAN(STA_IF)
+wlan.active(True)
+wlan.connect('ssid','password')
+import ntptimeTS3231
+ntptimeTS3231.settime()
+
+# Once the onboard clock is set, we have to define all of the parameters for running
+#  An example of a typical execution sequence:
+#---------------------------------------
+# Sampling parameters - must be defined
+#---------------------------------------
+
+import HCSR04_TrigRx
+
+prefix = 'Position1_FastWave'
+interval_ms = 100 # sampling interval in milliseconds, 100 is 10Hz
+record_time = 60 # time to record in seconds
+trigger_pin_num = 12 # trigger pin connection to HCSR04 sensor
+echo_pin_num = 13 # echo pin connection to HCSR04 sensor
+sound_speed = 343 # Sound speed in air in m/s
+write_file = 1 # 0 to just print values, 1 to save to text file with file prefix defined above
+
+HCSR04_TrigRx.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
+
+"""
+
 #
 from machine import RTC, Pin, Timer, unique_id
 import utime
@@ -8,31 +40,8 @@ from ubinascii import hexlify
 from gc import collect
 from hcsr04 import HCSR04
 from os import rename, listdir
-collect()      # Free up heap space
+collect()
 
-"""
-Before calling HCSR04_TrigRx, the rtc on the ESP8266 must be synced with NTP:
->>> import ntptimeTS3231
->>> ntptimeTS3231.settime()
-
-#  An example of a typical execution sequence:
-#---------------------------------------
-# Sampling parameters
-#---------------------------------------
-
-import HCSR04_TrigRx
-
-prefix = 'robert'
-interval_ms = 100 # sampling interval in milliseconds, 100 is 10Hz
-record_time = 30 # time to record in seconds
-trigger_pin_num = 12 # trigger pin connection to HCSR04 sensor
-echo_pin_num = 13 # echo pin connection to HCSR04 sensor
-sound_speed = 343 # Sound speed in m/s
-write_file = 1 # 0 to just print values, 1 to save to text file with file prefix defined above
-
-HCSR04_TrigRx.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
-
-"""
 def measure_dist(prefix='ocn351',interval_ms=100, record_time = 5,trigger_pin_num = 12, echo_pin_num=13, sound_speed=343, write_file = 0):
 	global startSampleFlag
 	startSampleFlag = 0
@@ -70,6 +79,7 @@ def init_record(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, 
 	if write_file ==1:	# If we've been writing a file...
 		datafile.close() # Close the temporary file
 		rename(tmp_file,filename) # Rename the temporary file with the filename constructed above
+	break
 
 # The actual function taking a measurement and recording the time
 def record_dist(sensor,write_file, rtc, datafile): # requires the sensor, real-time clock, and datafile handles, and whether we are writing a file
