@@ -9,7 +9,7 @@
 from network import WLAN, STA_IF
 wlan = WLAN(STA_IF)
 wlan.active(True)
-wlan.connect('ssid','password')
+wlan.connect('OTCnet','ocN3five1_OTc')
 import ntptimeTS3231
 ntptimeTS3231.settime()
 
@@ -18,10 +18,10 @@ ntptimeTS3231.settime()
 #---------------------------------------
 # Sampling parameters - must be defined
 #---------------------------------------
-
+ 	
 import HCSR04_TrigRx
 
-prefix = 'Position1_FastWave'
+prefix = 'Position2_SlowWave'
 interval_ms = 100 # sampling interval in milliseconds, 100 is 10Hz
 record_time = 60 # time to record in seconds
 trigger_pin_num = 12 # trigger pin connection to HCSR04 sensor
@@ -29,7 +29,8 @@ echo_pin_num = 13 # echo pin connection to HCSR04 sensor
 sound_speed = 343 # Sound speed in air in m/s
 write_file = 1 # 0 to just print values, 1 to save to text file with file prefix defined above
 
-HCSR04_TrigRx.measure_dist(prefix,interval_ms,record_time, trigger_pin_num, echo_pin_num, sound_speed, write_file)
+HCSR04_TrigRx.measure_dist(prefix,interval_ms,record_time,
+trigger_pin_num, echo_pin_num, sound_speed, write_file)
 
 """
 
@@ -79,7 +80,6 @@ def init_record(runTimer, record_time,interval_ms, sensor,write_file, tmp_file, 
 	if write_file ==1:	# If we've been writing a file...
 		datafile.close() # Close the temporary file
 		rename(tmp_file,filename) # Rename the temporary file with the filename constructed above
-	break
 
 # The actual function taking a measurement and recording the time
 def record_dist(sensor,write_file, rtc, datafile): # requires the sensor, real-time clock, and datafile handles, and whether we are writing a file
