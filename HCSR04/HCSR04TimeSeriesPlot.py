@@ -15,7 +15,7 @@ from matplotlib import mlab
 ## containing the output from your HCSR04
 
 
-data_directory='path'
+data_directory=''
 #--------------------------------------
 
 plt.ion() # interactive plotting turned on
