@@ -11,6 +11,9 @@ The driver for measuring distance using the HCSR04 sensor.  Required parameters 
 ###  - HCSR04_Timer.py
 Runs HCSR04 to collect distance measurements at a fixed time interval using a periodic timer, with option to write to file.
 
+###  - HCSR04_TrigRx.py
+Runs HCSR04 to collect distance measurements at a fixed time interval using a periodic timer, with option to write to file.  The timer is initiated from an external interrupt.
+
 ###  - HCSR04_SampleCt.py
 Runs HCSR04 to collect distance measurements at a fixed time interval using user defined interval and runtime, with option to write to file.
 
@@ -22,3 +25,5 @@ Reads .txt files produced by HCSR04_Timer.py or HCSR04_SampleCt.py to create tim
 (In development) IPython notebook containing instructions for two lab activities:
 1.  Approximate the speed of sound in air using measurements collected at a fixed distance over variable values of `c`, sound speed.  Requires micropython firmware on ESP8266 or PyBoard microcontrollers and HC-SR04 sensor.
 2.  Measure and map the change in seafloor/bathymetry using a HCSR04 with a waterproof transducer.  Students collect data at fixed intervals along a dock or pier and then create a plot of the bathymetry using python on their own computers.
+
+AcousticSensorLabHandout.ipynb contians all of the instructions for students to complete the assignment, but leaves out example executable code and data for figures.
