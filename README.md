@@ -7,6 +7,11 @@ The basic libraries and codes using the HC-SR04 or JSN-SR04T acoustic sensor con
 
 ###  hcsr04.py
 The driver for measuring distance using the HCSR04 sensor.  Required parameters are GPIO `trigger_pin` and `echo_pin`, with optional arguments for sound speed, `c`, and timeout. Private functions to intialize the sensor parameters and send signal.  `distance` function returns distance in millimeters.
+```python
+import hcsr04
+sensor = hcsr04.HCSR04(trigger_pin=12, echo_pin=14, c=343) # define pins and speed of sound
+sensor.distance() # returns distance in mm
+```
 
 ### firmware-combined.bin
 Micropython firmware for ESP8266 boards. See [Getting started with MicroPython on the ESP8266](https://docs.micropython.org/en/latest/esp8266/tutorial/intro.html) for details on deploying the firmware.
@@ -16,6 +21,10 @@ Basic boot initialization file example.
 
 ### print_distance.py
 Using the hcsr04 driver to continuously measure and print distance at set interval.
+```python
+import print_distance
+print_distance.print_distance(trigger_pin = 12, echo_pin = 14, c=343, interval=1) #interval is time in seconds
+```
 
 ### record_distance.py
 Using the hcsr04 driver to continuously measure distance at set interval and record to a text file. The output file can be read by the `plot_recorded_distance.py` script. Calling, as commented in the file, is completed as:
