@@ -1,6 +1,6 @@
 #
 # Reads and plots time series of distance data recorded in text file
-# using HCSR04_Timer.py or HCSR04_SampleCt.py
+# using HCSR04_Timer.py
 #
 import numpy as np
 import os, glob, datetime
@@ -15,24 +15,6 @@ from matplotlib import mlab
 ## containing the output from your HCSR04
 
 data_directory='C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Set4\\'
-#data_directory='C:\\\\Users\\\\Robert\\\\Documents\\\\UW\\\\Teaching\\\\Ocean351_2018\\\\testdata\\\\test1\\\\'
-
-file_list1=['C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Set4\\'] # setup the variable to contain the file names
-
-file_list2=['C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair2\\Position2_Med_622cc300_18032.txt',
-'C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair2\\Position3_Med_00351a00_18031.txt']
-
-file_list3=['C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair2\\Position2_Fast_622cc300_18029.txt',
-'C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair2\\Position3_Fast_00351a00_18029.txt']
-
-file_list4=['C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair1\\Position2_Slow2_622cc300_18022.txt',
-               'C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair1\\Position5_Slow2_00351a00_18022.txt'] # setup the variable to contain the file names
-
-file_list5=['C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair1\\Position2_Med_622cc300_18026.txt',
-'C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair1\\Position5_Med_00351a00_18026.txt']
-
-file_list6=['C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair1\\Position2_Fast_622cc300_18028.txt',
-'C:\\Users\\Robert\\Documents\\UW\\Teaching\\Ocean351_2018\\testdata\\wavetank\\Pair1\\Position5_Fast_00351a00_18027.txt']
 
 file_list=glob.glob(data_directory+"*Faster*.txt")
 print(file_list)

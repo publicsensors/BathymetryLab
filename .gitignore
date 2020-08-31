@@ -1,5 +1,2 @@
-/*
-!/.gitignore
-# Un-ignore all of subtree
-!/README.md
-!/HCSR04/
+.ipynb_checkpoints/
+__pycache__/
