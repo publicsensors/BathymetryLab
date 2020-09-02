@@ -42,16 +42,23 @@ record_distance.record_dist(prefix,interval_ms,record_time, trigger_pin_num, ech
 ```
 
 ## **ActivityNotebooks**
-### AcousticSensorLab.ipynb
-IPython notebook containing instructions for two lab activities:
-1.  Approximate the speed of sound in air using measurements collected at a fixed distance over variable values of `c`, sound speed.  Requires micropython firmware on ESP8266 or PyBoard microcontrollers and HC-SR04 sensor.
-2.  Measure and map the change in seafloor using a JSN-SR04T waterproof transducer.  Students collect data at fixed intervals along a dock or pier and then create a plot of the bathymetry using python on their own computers.
+### InstructorExamples.ipynb
+IPython notebook containing instructions and example figures for two lab activities:
+1.  Approximate the speed of sound in air using measurements collected at a fixed distance over variable values of `c`, sound speed.  Requires micropython firmware on ESP8266 or PyBoard microcontrollers and HC-SR04 sensor. `SpeedOfSound.ipynb` is the empty activity notebook.
+2.  Measure and map the change in seafloor using a JSN-SR04T waterproof transducer.  Students collect data at fixed intervals along a dock or pier and then create a plot of the bathymetry using python on their own computers. `BathymetryLab.ipynb` is the empty activity notebook.
 
-### AcousticSensorLabHandout.ipynb
-Contains all of the instructions for students to complete the assignment, but leaves out example executable code and data for figures.
+### SpeedOfSound.ipynb
+Contains all of the instructions for students to complete the assignment described above, but leaves out example executable code and data for figures.
 
-### AcousticSensorLabPyserial.ipynb
-Identical lab activity to `AcousticSensorLab.ipynb` however the notebook utilizes `pyserial` to record measurements directly from a USB-connected ESP8266 rather than requiring students to input readings by hand.
+### SpeedOfSound.ipynb
+Identical lab activity to `SpeedOfSound.ipynb` however the notebook utilizes `pyserial` to record measurements directly from a USB-connected ESP8266 rather than requiring students to input readings by hand.
+
+### BathymetryLab.ipynb
+Contains all of the instructions for students to complete the assignment described above, but leaves out example executable code and data for figures.
+
+### BathymetryLab.ipynb
+Identical lab activity to `BathymetryLab.ipynb` however the notebook utilizes `pyserial` to record measurements directly from a USB-connected ESP8266 rather than requiring students to input readings by hand.
+
 
 ## **WaveTankLab**
 Code for conducting an extension activity using multiple distance sensors to measure wave height at different positions in a wave tank. Students explore signal processing and implications of variable sampling frequencies.
@@ -64,3 +71,9 @@ Runs HCSR04 to collect distance measurements at a fixed time interval using a pe
 
 ###  xcorrTimeSeries.py
 Reads .txt files produced by HCSR04_Timer.py or HCSR04_SampleCt.py to create time series scatter plots of distance measurements.  User must define directory of file locations.
+
+## **AdditionalCode**
+Extra materials for reading and plotting recorded files.
+
+### plot_recorded_distance.py
+Reads and plots time series of distance data recorded in text file using HCSR04_Timer.py or record_distance.py.
