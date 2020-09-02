@@ -3,7 +3,7 @@
 This repository serves as a central location for the ultrasonic distance sensor Bathymetry Lab module and related activities for both outreach, K-12, and undergraduate teaching.
 
 ## **ESP8266**
-The basic libraries and codes using the HC-SR04 or JSN-SR04T acoustic sensor controlled via micropython on an ESP8266 processor microcontroller such as the [HUZZAH ESP8266 Breakout](https://www.adafruit.com/product/2471).
+The basic libraries and codes using the HC-SR04 or JSN-SR04T acoustic sensor controlled via micropython on an ESP8266 processor microcontroller such as the [Feather HUZZAH with ESP8266](https://www.adafruit.com/product/2821).
 
 ###  hcsr04.py
 The driver for measuring distance using the HCSR04 sensor.  Required parameters are GPIO `trigger_pin` and `echo_pin`, with optional arguments for sound speed, `c`, and timeout. Private functions to intialize the sensor parameters and send signal.  `distance` function returns distance in millimeters.
