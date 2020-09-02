@@ -1,6 +1,6 @@
 #
 # Reads and plots time series of distance data recorded in text file
-# using HCSR04_Timer.py or HCSR04_SampleCt.py
+# using HCSR04_Timer.py or record_distance.py
 #
 import numpy as np
 import os, glob, datetime
