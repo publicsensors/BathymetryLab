@@ -8,7 +8,7 @@ from machine import Pin
 import utime
 from hcsr04 import HCSR04
 
-sound_speed = 343
+sound_speed = 1480
 trigger_pin_num=12
 echo_pin = 14
 sleep_time  = 1
