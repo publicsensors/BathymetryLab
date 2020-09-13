@@ -59,4 +59,4 @@ class HCSR04:
 		# 0.34320 mm/us that is 1mm each 2.91us
 		# pulse_time // 2 // 2.91 -> pulse_time // 5.82 -> pulse_time * 100 // 582 
 		mm = pulse_time * 100 // ((1/(self.c/1000))*200)
-		return mm
+		return mm/10 # return in cm
