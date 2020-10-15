@@ -11,8 +11,9 @@ IPython notebooks for use to measure and map the change in seafloor using a JSN-
 Identical lab activity to `BathymetryLab.ipynb` however the notebook utilizes `pyserial` to record measurements directly from a USB-connected ESP8266 rather than requiring students to input readings by hand.
 ___
 ## **Microcontroller**
-### Code
-The basic libraries and codes using the HC-SR04 or JSN-SR04T acoustic sensor controlled via micropython on an ESP8266 processor microcontroller such as the [Feather HUZZAH with ESP8266](https://www.adafruit.com/product/2821).
+This folder contains the basic libraries and codes for using the HC-SR04 or JSN-SR04T acoustic sensor via MicroPython, though alternative microcontroller systems can be used to conduct the activity. Examples and code in this repository are for use with an ESP8266 processor microcontroller such as the [Feather HUZZAH with ESP8266](https://www.adafruit.com/product/2821).
+
+Another example of sensor assembly using a [Feather STM32F405 Express](https://www.adafruit.com/product/4382) and [PyBoard](https://store.micropython.org/) microcontrollers can be found in the [Microcontroller Kits repository]((https://github.com/publicsensors/MicrocontrollerKits/tree/master/Sensors/Acoustic) within the PublicSensors organization.
 
 ####  hcsr04.py
 The driver for measuring distance using the HCSR04 sensor.  Required parameters are GPIO `trigger_pin` and `echo_pin`, with optional arguments for sound speed, `c`, and timeout. Private functions to intialize the sensor parameters and send signal.  `distance` function returns distance in millimeters.
