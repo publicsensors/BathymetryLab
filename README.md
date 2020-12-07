@@ -5,6 +5,4 @@
 
 The article this repository supports was published in the September 2020 volume of <a href="https://doi.org/10.5670/oceanog.2020.305" target="_blank">*Oceanography*</a>.
 
-<h1><center> BathymetryLab Repository</center></h1>
-
 This repository serves as a central location for the ultrasonic distance sensor Bathymetry Lab module and related activities for outreach, K-12, and undergraduate teaching. There are two sections to this repository, [**BathymetryLab**](https://github.com/publicsensors/BathymetryLab/tree/master/BathymetryLab) which contains the materials necessary to complete the seafloor activity, and [**AddOnsAndExtensions**](https://github.com/publicsensors/BathymetryLab/tree/master/AddOnsAndExtensions) which contains additional lab activities and code that can be used with the ultrasonic distance module.
